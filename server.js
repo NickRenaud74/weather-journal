@@ -26,20 +26,21 @@ const listening = () => {
 const server = app.listen(port, listening);
 
 //Global Variable holding project data
-let projectData = [];
+let projectData = {};
+
 
 //GET Route
-app.get('/', (req, res) => {
+app.get('/projectData', (req, res) => {
     res.send(projectData);
 });
 
 //POST Route
 const addEntry = (req, res) => {
-    let newEntry = {
-        temp: req.body.temp,
-        input: req.body.input
-    }
-    projectData.push(newEntry);
+    let newEntry = req.body
+    projectData['temp'] = newEntry.temp;
+    projectData['date'] = newEntry.date;
+    projectData['input'] = newEntry.input;
+    res.send(projectData);
 };
 
 app.post('/addEntry', addEntry);
