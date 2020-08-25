@@ -36,10 +36,15 @@ app.get('/projectData', (req, res) => {
 
 //POST Route
 const addEntry = (req, res) => {
-    let newEntry = req.body
-    projectData['temp'] = newEntry.temp;
+    let newEntry = req.body;
     projectData['date'] = newEntry.date;
+    projectData['temp'] = newEntry.temp;
     projectData['input'] = newEntry.input;
+    projectData['feelsLike'] = newEntry.feelsLike;
+    projectData['city'] = newEntry.city;
+    projectData['country'] = newEntry.country;
+    projectData['description'] = newEntry.description;
+
     res.send(projectData);
 };
 

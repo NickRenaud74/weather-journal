@@ -4,13 +4,15 @@ const apiKey = '09e66fb0e0f51a3338ba81c87ae863d4';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+//getMonth() is 0 indexed + 1 for correct month
+let today = `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`;
 
 //Get Request to Open Weather Map API
 const getWeather = async (url, zip, key) => {
-    const res = await fetch(`${url}${zip}&appid=${key}`);
+    const res = await fetch(`${url}${zip}&units=imperial&appid=${key}`);
     try {
         const weatherData = await res.json();
+        console.log(weatherData);
         return weatherData;
     } catch (error) {
         console.log('error', error);
@@ -29,36 +31,47 @@ const postWeather = async (url = '', data = {}) => {
     });
     try {
         const newData = await res.json();
-        console.log(newData)
         return newData;
     } catch (error) {
         console.log('error: ', error);
     };
 };
 
-//UI update function
+//UI dynamically update html function
 const updateUI = async () => {
     const request = await fetch('/projectData');
+
     try {
         const projectData = await request.json();
-        let recent = projectData.length - 1;
-        document.getElementById('date').innerHTML = projectData[recent].date;
-        document.getElementById('temp').innerHTML = projectData[recent].temp;
-        document.getElementById('content').innerHTML = projectData[recent].input;
-  
-    }catch(error){
-      console.log("error", error);
-    }
-  }
+        console.log(projectData);
 
-  //Get, post data, update UI
+        document.getElementById('date').innerHTML = projectData.date;
+        document.getElementById('location').innerHTML = `Current weather for ${projectData.city}, ${projectData.country}: `;
+        document.getElementById('description').innerHTML = projectData.description;
+        document.getElementById('temp').innerHTML = `Temperature: ${Math.floor(projectData.temp)} &degF`;
+        document.getElementById('feels-like').innerHTML = `Feels like: ${Math.floor(projectData.feelsLike)} &degF`;
+        document.getElementById('input').innerHTML = `Your feelings: ${projectData.input}`;
+    } catch (error) {
+        console.log('error', error);
+    };
+};
+
+//Get, post data, update UI
 const getData = (event) => {
     let zip = document.getElementById('zip').value;
     let feelings = document.getElementById('feelings').value;
 
     getWeather(baseUrl, zip, apiKey)
         .then(data => {
-            postWeather('/addEntry', { temp: data.main.temp, date: newDate, input: feelings })
+            postWeather('/addEntry', {
+                temp: data.main.temp,
+                feelsLike: data.main.feels_like,
+                date: today,
+                city: data.name,
+                country: data.sys.country,
+                description: data.weather[0].description,
+                input: feelings
+            });
         })
         .then(() => {
             updateUI()
