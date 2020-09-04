@@ -1,0 +1,29 @@
+/* Previous Entries section */
+.history {
+    grid-area: pv;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    background: rgba(32, 32, 255, 0.719);
+    max-height: 400px;
+    overflow: auto;
+}
+
+.prev-entries li {
+    list-style-type: none;
+    border: 1px solid rgb(196, 166, 0);
+    padding: 20px;
+    margin-right: 20px;
+    overflow-wrap: break-word;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+}
+
+.prev-location {
+    font-size: 1.5rem;
+    padding-top: 35px;
+}

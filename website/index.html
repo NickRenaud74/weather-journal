@@ -1,46 +1,60 @@
 <!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Weather Journal</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Weather Journal</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    
-    <body>
+<body>
+    <div class="container">
+        <!--Header-->
         <header class="header">
-            <h1>My Weather Journal</h1>
+            <h1>Weather Journal</h1>
         </header>
 
-        <main> 
+        <!--User input section-->
+        <div class="form">
             <div class="zipcode">
-                <label for="zip">Enter Your Zipcode: </label>
-                <input type="text" id="zip" placeholder="Zip Code">
+                <label for="zip" class="label">Enter Your Zipcode: </label>
+                <input type="text" id="zip" placeholder="Zip Code" />
             </div>
             <div class="journal">
-                <label for="feelings">How are you feeling today? </label>
-                <textarea id="feelings" placeholder="Journal Post" cols="30" rows="10"></textarea>
+                <label for="feelings" class="label">How are you feeling today? </label>
+                <textarea id="feelings" placeholder="Journal Entry" cols="20" rows="2"></textarea>
             </div>
             <div class="submit">
                 <button id="generate" type="submit">Submit</button>
             </div>
-            <div class="entries">
-                <h2>Most Recent Entries</h2>
-                <div id="date"></div>
+        </div>
+
+        <!--Main entry section-->
+        <div class="entries">
+            <h2>Most Recent Entry</h2>
+            <div class="content">
                 <div id="location"></div>
+                <div id="date"></div>
+                <div class="weather">
+                    <div id="icon"></div>
+                    <div id="temp"></div>
+                </div>
                 <div id="description"></div>
-                <div id="temp"></div>
                 <div id="feels-like"></div>
                 <div id="input"></div>
             </div>
-        </main>
+        </div>
 
-        <footer class="footer">
-            Copyright 2020 - Nick Renaud
-        </footer>
+        <!--Previous entry section-->
+        <div class="history">
+            <h2>Previous Entries</h2>
+            <ul class="prev-entries"></ul>
+        </div>
+    </div>
 
-        <script src="app.js"></script>
-    </body>
+    <script src="app.js"></script>
+</body>
+
 </html>

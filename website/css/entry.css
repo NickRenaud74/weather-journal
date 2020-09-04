@@ -1,0 +1,38 @@
+/* Main entry Section */
+.entries {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    background: rgba(9, 9, 255, 0.836);
+    padding: 20px;
+    overflow-wrap: break-word;
+    max-height: 400px;
+}
+
+#location {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.weather {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+}
+
+#temp {
+    padding-top: 20px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#description,
+#feels-like,
+#input {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}

@@ -1,0 +1,51 @@
+/*Form section */
+.form {
+    background: rgba(32, 32, 255, 0.719);
+    grid-area: fm;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: auto;
+    font-weight: bold;
+}
+
+.zipcode {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.journal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.submit {
+    display: flex;
+    margin: 10px;
+    padding-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.label {
+    padding: 10px;
+}
+
+#zip,
+#feelings,
+#generate {
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#generate {
+    background: rgb(255, 200, 0);
+    color: black;
+    font-weight: bolder;
+    padding: 10px;
+}
