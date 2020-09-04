@@ -61,7 +61,7 @@ const updateHistory = data => {
     };
 };
 
-//Fetch data from 'projectData' variable and update UI
+//Fetch data from 'projectData' variable and update UI dynamically
 const updateUI = async () => {
     const request = await fetch('/projectData');
 

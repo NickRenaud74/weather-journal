@@ -1,15 +1,15 @@
 //Global Variable holding project data
 let projectData = {};
 
-//Requiring express
+//Importing and initializing express
 const express = require('express');
 const app = express();
 
-//Initiliazing cors for cross-origin allowance
+//Initializing cors for cross-origin allowance
 const cors = require('cors');
 app.use(cors());
 
-//Configuring app to use body-parser as middleware
+//Configuring app to use body-parser as middle-ware
 const bodyParser = require('body-parser');
 const { response } = require('express');
 app.use(bodyParser.urlencoded({ extended: false }));
